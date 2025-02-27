@@ -13,22 +13,18 @@ import java.io.IOException;
  * @since 2025/2/27 19:40
  */
 public class MainGenerator {
-    public static void main(String[] args) throws TemplateException, IOException {
-        // 1. 静态文件生成
-        String projectPath = System.getProperty("user.dir");
-        String inputPath = projectPath + File.separator + "kezi-generator-demo-projects" + File.separator + "acm-template";
-        System.out.println(inputPath);
-        String outputPath = projectPath;
-        StaticGenerator.copyFilesByRecursive(inputPath, outputPath);
 
-        // 2. 动态文件生成
+    /**
+     * 动态生成文件
+     *
+     * @param mainTemplateConfig    配置参数
+     * @throws TemplateException    模板异常
+     * @throws IOException          IO 异常
+     */
+    public static void doGenerate(MainTemplateConfig mainTemplateConfig) throws TemplateException, IOException {
+        String projectPath = System.getProperty("user.dir");
         String dynamicInputPath = projectPath + File.separator + "kezi-generator-basic" + File.separator + "src/main/resources/template/MainTemplate.java.ftl";
         String dynamicOutputPath = projectPath + File.separator + "kezi-generator-basic" + File.separator + "MainTemplate.java";
-
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("keanu");
-        mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果：");
         DynamicGenerator.doGenerate(dynamicInputPath, dynamicOutputPath, mainTemplateConfig);
     }
 }

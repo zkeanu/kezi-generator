@@ -25,9 +25,9 @@ public class DynamicGenerator {
         String outputPath = projectPath + File.separator + "MainTemplate.java";
 
         MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("keanu");
-        mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果");
+        mainTemplateConfig.setAuthor("zkeanu");
+        mainTemplateConfig.setLoop(true);
+        mainTemplateConfig.setOutputText("output");
         doGenerate(inputPath, outputPath, mainTemplateConfig);
     }
 
